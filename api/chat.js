@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const OIVSCode = {
   apiBase: "https://oi-vscode-server-2.onrender.com/v1",
@@ -50,7 +50,6 @@ export default async function handler(req, res) {
 
   try {
     const { messages, stream = false, max_tokens = 2000, temperature = 0.7, model } = req.body;
-
     const resolvedModel = resolveModelName(model || OIVSCode.model);
 
     if (stream) {
