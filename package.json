@@ -2,8 +2,8 @@
   "name": "vercel-gpt-proxy",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "dependencies": {
     "axios": "^1.6.0"
   }
+  // 🔴 remove "type": "module"
 }
