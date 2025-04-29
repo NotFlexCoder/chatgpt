@@ -44,23 +44,29 @@ async function handleStreamingResponse(messages, maxTokens, temperature, res) {
 }
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
+  if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { messages, stream = false, max_tokens = 2000, temperature = 0.7, model } = req.body;
+    const { message, stream = false, max_tokens = 2000, temperature = 0.7, model } = req.query;
+    
+    // If message parameter is not provided in the URL, return an error
+    if (!message) {
+      return res.status(400).json({ error: 'Message query parameter is required' });
+    }
+
     const resolvedModel = resolveModelName(model || OIVSCode.model);
 
     if (stream) {
-      return handleStreamingResponse(messages, max_tokens, temperature, res);
+      return handleStreamingResponse([ { role: 'user', content: message } ], max_tokens, temperature, res);
     }
 
     const response = await axios.post(
       `${OIVSCode.apiBase}/chat/completions`,
       {
         model: resolvedModel,
-        messages,
+        messages: [ { role: 'user', content: message } ],
         stream: false,
         max_tokens,
         temperature
