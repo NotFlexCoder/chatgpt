@@ -59,6 +59,12 @@ Send a GET request to the deployed function or local server:
 - 📭 400 Bad Request: If message is not provided.
 - 💥 500 Internal Error: If the external API fails or doesn't respond.
 
+## 🛠️ Setup
+
+Watching Following Video You Can Host This Api & Gain Some Knowledge 👇
+
+[![Watch the video](https://img.youtube.com/vi/pHYuS9jLW7Y/hqdefault.jpg)](https://youtu.be/pHYuS9jLW7Y)
+
 ## 📄 License
 
 This project is licensed under the License - see the [LICENSE](https://github.com/NotFlexCoder/chatgpt/blob/main/LICENSE) file for details.
